@@ -47,6 +47,14 @@ public class Controller {
                             Image image_home = new Image("img/home.png");
                             gridPane.add(new ImageView(image_home), j, i);
                             break;
+                        case ' ':
+                            Image image_space = new Image("img/blank.png");
+                            gridPane.add(new ImageView(image_space), j, i);
+                            break;
+                        case '.':
+                            Image image_dot = new Image("img/blank.png");
+                            gridPane.add(new ImageView(image_dot), j, i);
+                            break;
                         default:
                             Image image_blank = new Image("img/blank.png");
                             gridPane.add(new ImageView(image_blank), j, i);
