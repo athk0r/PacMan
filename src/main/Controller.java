@@ -19,7 +19,7 @@ public class Controller {
     @FXML
     private void createNewGame(){
         try {
-            BufferedReader input_file = new BufferedReader(new FileReader(new File("1_pacman_labyrinth.txt")));
+            BufferedReader input_file = new BufferedReader(new FileReader(new File("src/1_pacman_labyrinth.txt")));
             String line = "";
             int row = 0;
             int column = 0;
@@ -34,12 +34,22 @@ public class Controller {
             //Fülle Feld
             for(int i = 0; i < arrLines.size(); i++){
                 String actLine = arrLines.get(i);
+                actLine = actLine.replaceAll("\\s", "");
+                System.out.println(actLine);
                 char[] arrChars = actLine.toCharArray();
                 for(int j = 0; j < arrChars.length; j++){
                     switch(arrChars[j]){
-                        case "#":
-                            Image image = new Image("img/wall.png");
-                            gridPane.add(new ImageView(image), j, i);
+                        case '#':
+                            Image image_wall = new Image("img/wall.png");
+                            gridPane.add(new ImageView(image_wall), j, i);
+                            break;
+                        case '-':
+                            Image image_home = new Image("img/home.png");
+                            gridPane.add(new ImageView(image_home), j, i);
+                            break;
+                        default:
+                            Image image_blank = new Image("img/blank.png");
+                            gridPane.add(new ImageView(image_blank), j, i);
                             break;
                     }
                 }
