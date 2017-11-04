@@ -1,5 +1,6 @@
 package main;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Controller {
     @FXML
@@ -29,12 +31,10 @@ public class Controller {
                 arrLines.add(line);
             }
             column = arrLines.get(0).length();
-
             GridPane gridPane = new GridPane();
             //Fülle Feld
             for(int i = 0; i < arrLines.size(); i++){
                 String actLine = arrLines.get(i);
-                actLine = actLine.replaceAll("\\s", "");
                 System.out.println(actLine);
                 char[] arrChars = actLine.toCharArray();
                 for(int j = 0; j < arrChars.length; j++){
