@@ -52,7 +52,7 @@ public class Controller {
                             gridPane.add(new ImageView(image_space), j, i);
                             break;
                         case '.':
-                            Image image_dot = new Image("img/blank.png");
+                            Image image_dot = new Image("img/point.png");
                             gridPane.add(new ImageView(image_dot), j, i);
                             break;
                         default:
