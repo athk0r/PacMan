@@ -1,6 +1,8 @@
 package main;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -30,7 +32,18 @@ public class Controller {
 
             GridPane gridPane = new GridPane();
             //Fülle Feld
-            
+            for(int i = 0; i < arrLines.size(); i++){
+                String actLine = arrLines.get(i);
+                char[] arrChars = actLine.toCharArray();
+                for(int j = 0; j < arrChars.length; j++){
+                    switch(arrChars[j]){
+                        case "#":
+                            Image image = new Image("img/wall.png");
+                            gridPane.add(new ImageView(image), j, i);
+                            break;
+                    }
+                }
+            }
             anchorPane.getChildren().add(gridPane);
         }
         catch (IOException e){
