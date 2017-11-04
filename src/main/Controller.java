@@ -3,6 +3,7 @@ package main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -22,8 +23,10 @@ public class Controller {
     @FXML
     VBox vBox;
     GridPane gridPane;
+    GridPane gridPunkte = new GridPane();
     Image image_pac = new Image("img/pacman.png");
     Image image_point_eaten = new Image("img/point_eaten.png");
+    Label punkte = new Label("0");
 
     char[][] board;
     int pac_column;
@@ -85,7 +88,10 @@ public class Controller {
                 }
             }
             gridPane.add(new ImageView(image_pac), pac_column, pac_row);
+            gridPunkte.add(new Label("Punkte:"), 0, arrLines.size());
+            gridPunkte.add(punkte, 1, arrLines.size());
             vBox.getChildren().add(gridPane);
+            vBox.getChildren().add(gridPunkte);
             board[pac_row][pac_column] = 'e';
             play();
         }
@@ -103,6 +109,10 @@ public class Controller {
                     case DOWN:
                         //Wandkontrolle
                         if(board[pac_row+1][pac_column] != '#'){
+                            if(board[pac_row+1][pac_column] == '.'){
+                                int tmp = Integer.parseInt(punkte.getText());
+                                punkte.setText(Integer.toString(++tmp));
+                            }
                             board[pac_row+1][pac_column] = 'e';
                             board[pac_row][pac_column] = 'x';
                             gridPane.add(new ImageView(image_pac), pac_column, pac_row+1);
@@ -112,6 +122,10 @@ public class Controller {
                         break;
                     case UP:
                         if(board[pac_row-1][pac_column] != '#'){
+                            if(board[pac_row-1][pac_column] == '.'){
+                                int tmp = Integer.parseInt(punkte.getText());
+                                punkte.setText(Integer.toString(++tmp));
+                            }
                             board[pac_row-1][pac_column] = 'e';
                             board[pac_row][pac_column] = 'x';
                             gridPane.add(new ImageView(image_pac), pac_column, pac_row-1);
@@ -121,6 +135,10 @@ public class Controller {
                         break;
                     case RIGHT:
                         if(board[pac_row][pac_column+1] != '#'){
+                            if(board[pac_row][pac_column+1] == '.'){
+                                int tmp = Integer.parseInt(punkte.getText());
+                                punkte.setText(Integer.toString(++tmp));
+                            }
                             board[pac_row][pac_column+1] = 'e';
                             board[pac_row][pac_column] = 'x';
                             gridPane.add(new ImageView(image_pac), pac_column+1, pac_row);
@@ -130,6 +148,10 @@ public class Controller {
                         break;
                     case LEFT:
                         if(board[pac_row][pac_column-1] != '#'){
+                            if(board[pac_row][pac_column-1] == '.'){
+                                int tmp = Integer.parseInt(punkte.getText());
+                                punkte.setText(Integer.toString(++tmp));
+                            }
                             board[pac_row][pac_column-1] = 'e';
                             board[pac_row][pac_column] = 'x';
                             gridPane.add(new ImageView(image_pac), pac_column-1, pac_row);
