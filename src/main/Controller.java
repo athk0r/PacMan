@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class Controller {
     @FXML
     AnchorPane anchorPane;
+    @FXML
+    VBox vBox;
     GridPane gridPane;
     Image image_pac = new Image("img/pacman.png");
     Image image_point_eaten = new Image("img/point_eaten.png");
@@ -82,7 +85,7 @@ public class Controller {
                 }
             }
             gridPane.add(new ImageView(image_pac), pac_column, pac_row);
-            anchorPane.getChildren().add(gridPane);
+            vBox.getChildren().add(gridPane);
             board[pac_row][pac_column] = 'e';
             play();
         }
